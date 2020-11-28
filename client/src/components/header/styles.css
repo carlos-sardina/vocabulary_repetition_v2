@@ -1,0 +1,23 @@
+header {
+  background-color: #2196f3;
+  color: #ffffff;
+  padding: 15px;
+  position: fixed;
+  width: -webkit-fill-available;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header span {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+}
+
+header i {
+  transition: background-color .1s;
+}
+
+header i:active {
+  color: rgba(255, 255, 255, .5);
+}

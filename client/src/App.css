@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+}
+
+body {
+  background-color: #fafafa;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.main_content {
+  padding: 20px;
+  padding-top: 65px;
+  padding-bottom: 80px;
+}
+
+/* Backgrounds */
+.bg_gray {
+  background-color: #6c757d;
+}
+
+.bg_green {
+  background-color: seagreen;
+}
+
+.bg_blue {
+  background-color: #2196f3;
+}
+
+.bg_yellow {
+  background-color: #ffc107;
+}
+
+.bg_red {
+  background-color: #f44336;
+}
+
+.bg_red_str {
+  background-color: #b71c1c;
+}
+
+.bg_purple {
+  background-color: #9c27b0;
+}
+
+.bg_purple_str {
+  background-color: #4a148c;
+}
+
+.bg_black {
+  background-color: #212121;
+}
+
+/* BUTTONS */
+.btn_bc_green {
+  background-color: #28a745;
+}
+
+.btn_bc_green:active {
+  background-color: #208638;
+}
+
+.btn_bc_blue {
+  background-color: #007bff;
+}
+
+.btn_bc_blue:active {
+  background-color: #015fc4;
+}
+
+.btn_bc_red {
+  background-color: #dc3545;
+}
+
+.btn_bc_red:active {
+  background-color: #be2d3c;
+}
+
+.btn_bc_yellow {
+  background-color: #ffc107;
+}
+
+.btn_bc_yellow:active {
+  background-color: #dba501;
+}

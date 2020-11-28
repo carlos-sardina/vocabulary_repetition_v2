@@ -1,14 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './styles.css';
 import { constants } from '../../config/const';
+import { setModalStatus } from '../../redux/actions/modals';
+import { connect } from 'react-redux';
 
-export default class header extends Component {
-  render() {
-    return (
-      <header>
-        <span>{ constants.app_name }</span>
-        <i className="material-icons">menu</i>
-      </header>
-    )
+function header(props) {
+
+  function openDetailsModal() {
+    props.setModalStatus('menuModal', true);
   }
+
+  return (
+    <header>
+      <span>{ constants.app_name }</span>
+      <i className="material-icons" onClick={openDetailsModal}>menu</i>
+    </header>
+  )
 }
+
+const mapDispatchToProps = {
+  setModalStatus
+}
+
+export default connect(null, mapDispatchToProps)(header);

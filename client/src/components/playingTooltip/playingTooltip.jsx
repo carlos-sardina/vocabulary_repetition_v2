@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './styles.css';
 
-export default class Playing extends Component {
-  render() {
-    return (
-      <em className="playing-tooltip">
-        <i className="material-icons">play_arrow</i>
-        Playing
-      </em>
-    )
-  }
+export default function PlayingTooltip() {
+  return (
+    <em className="playing-tooltip">
+      <i className="material-icons">play_arrow</i>
+      Playing
+    </em>
+  )
 }

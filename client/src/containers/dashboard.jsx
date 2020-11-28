@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/header/header';
 import PlayingBar from '../components/playingBar/playingBar';
 import WordList from '../components/wordList/wordList';
+import AppModals from '../components/appModals/modals';
 
 export default class Home extends Component {
 
@@ -56,6 +57,7 @@ export default class Home extends Component {
       <>
         <Header />
         <WordList words={words} />
+        <AppModals />
         <footer>
           <PlayingBar />
         </footer>

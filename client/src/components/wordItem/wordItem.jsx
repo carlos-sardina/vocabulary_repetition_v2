@@ -1,14 +1,14 @@
 import React from 'react';
 import PlayingTooltip from '../playingTooltip/playingTooltip';
 import { setTimesColor } from '../../util/setItemTimesColor';
-import { setModalStatus } from '../../redux/actions/modals';
+import { setSelectedWord } from '../../redux/actions';
 import { connect } from 'react-redux';
 import './styles.css';
 
 function item(props) {
 
-  function openDetailsModal() {
-    props.setModalStatus('cardDetailsModal', true);
+  function wordClickHandler() {
+    props.setSelectedWord(props.data);
   }
 
   // const { currentWordId } = this.props.state;
@@ -16,7 +16,7 @@ function item(props) {
   // const averageDiff = times_played - this.props.average;
 
   return (
-    <div className="card-container" onClick={openDetailsModal}>
+    <div className="card-container" onClick={wordClickHandler}>
       <div className="word-item-container">
         <div className="word-container">
           <div className="inline-container">
@@ -37,7 +37,7 @@ function item(props) {
 }
 
 const mapDispatchToProps = {
-  setModalStatus
+  setSelectedWord
 }
 
 export default connect(null, mapDispatchToProps)(item);

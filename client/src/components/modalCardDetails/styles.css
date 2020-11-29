@@ -1,0 +1,30 @@
+.info-modal .word-container h3 {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  color: #39414D;
+}
+
+.info-modal .word-container h4 {
+  font-weight: 300;
+  margin-top: 5px;
+  font-size: 20px;
+  color: #5E6670;
+}
+
+.info-modal .tag-container {
+  margin-top: 25px;
+}
+
+.info-modal .tag-container .modal-tag-item {
+  margin: 0 5px;
+}
+
+.info-modal .actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+  margin-left: -20px;
+  width: calc(100% + 40px);
+  border-radius: 0 0 8px 8px;
+}

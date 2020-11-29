@@ -1,13 +1,12 @@
 import './sharedStyles/index';
-
-import Dashboard from './containers/dashboard';
 import { Store } from './redux/store';
 import { Provider } from "react-redux";
+import Container from "./containers/containers"
 
 function App() {
   return (
     <Provider store={Store}>
-      <Dashboard />
+      <Container />
     </Provider>
   )
 }

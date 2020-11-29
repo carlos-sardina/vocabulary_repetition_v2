@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import WordItem from '../wordItem/wordItem';
+import { connect } from 'react-redux'
 
-class word_list extends Component {
-  render() {
-
-    const { words } = this.props;
+function WordList(props) {
+  const { words } = props;
 
     return (
       <div className="main_content">
         {
-          words.map(word => {
-            return <WordItem key={word._id} data={word} />
-          })
+          words.map(word => <WordItem key={word._id} data={word} />)
         }
       </div>
     )
-  }
 }
 
-export default word_list;
+const mapStateToProps = (state) => ({
+  words: state.wordsReducer.words
+})
+
+
+export default connect(mapStateToProps)(WordList);

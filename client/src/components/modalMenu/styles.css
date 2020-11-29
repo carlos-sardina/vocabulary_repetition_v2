@@ -1,0 +1,23 @@
+.menu-modal {
+  background-color: #fefefe;
+  margin: auto;
+  margin-right: 0;
+  border: 1px solid #888;
+  width: 200px;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.menu-modal .menuItem {
+  padding: 20px 15px;
+  border-top: 1px solid #cfd8dc;
+  transition: background-color .1s;
+}
+
+.menu-modal .menuItem:active{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.menu-modal .menuItem:first-child{
+  border: none;
+}

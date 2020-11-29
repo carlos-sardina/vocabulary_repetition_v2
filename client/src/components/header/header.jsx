@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css';
 import { constants } from '../../config/const';
-import { setModalStatus } from '../../redux/actions/modals';
+import { setModalStatus } from '../../redux/actions';
 import { connect } from 'react-redux';
 
 function header(props) {

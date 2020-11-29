@@ -13,7 +13,7 @@ router.put('/setLearned/:id', moveToLearned);
 router.post('/create', create);
 router.delete('/delete/:id', del);
 router.put('/update/:id', update);
-router.patch('/update/:id/counter', updateTimesPlayed);
+// router.patch('/update/:id/counter', updateTimesPlayed);
 router.get('/match/:word', matchWords);
 
 export default router;

@@ -2,7 +2,6 @@ import { type as modalTypes } from "../actions/modals";
 
 const initialState = {
   addEditModal: false,
-  cardDetailsModal: false,
   menuModal: false
 };
 

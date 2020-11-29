@@ -1,0 +1,15 @@
+.modal-btn {
+  padding: 13px 0;
+  width: -webkit-fill-available;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color .1s;
+  font-size: 12px;
+}
+
+.modal-btn i {
+  margin-right: 5px;
+  font-size: 14px;
+}

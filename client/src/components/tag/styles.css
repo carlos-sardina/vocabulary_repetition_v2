@@ -1,0 +1,18 @@
+.modal-tag-item {
+  display: inline-flex;
+  padding: 4px 5px;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.modal-tag-item span {
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.modal-tag-item i {
+  font-size: 14px;
+  color: #ffffff;
+  transition: color .1s;
+  margin-right: 3px;
+}

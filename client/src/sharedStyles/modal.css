@@ -1,14 +1,29 @@
 @media (max-width: 720px) {
-  .hyperModalWrapper___2sZCR .hyperModalContentWrapper___1o7Ug {
+  .app-modal {
     width: 80% !important;
   }
 }
 
-.hyperModalWrapper___2sZCR .hyperModalContentWrapper___1o7Ug {
+.app-modal {
   margin: auto;
   padding: 25px 20px 0 20px;
-  border: 1px solid #888;
   text-align: center;
   border-radius: 10px 10px 0 0 !important;
   height: auto !important;
+}
+
+.hyperCloseIconWrapper___ujoQX {
+  display: none !important;
+}
+
+.app-modal-p0 {
+  padding: 0 !important;
+}
+
+.menu-modal-container {
+  background-color: transparent !important;
+  width: auto !important;
+  height: auto !important;
+  margin-top: 54px !important;
+  border-radius: 0 0 10px 10px !important;
 }

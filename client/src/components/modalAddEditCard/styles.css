@@ -1,0 +1,39 @@
+.add-modal .actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+  margin-left: -20px;
+  width: calc(100% + 40px);
+  border-radius: 0 0 8px 8px;
+}
+
+.add-modal .word-container input {
+  border: 1px solid #C7D0D8;
+  border-radius: 3px;
+  padding: 10px;
+  width: -webkit-fill-available;
+  margin-top: 25px;
+  font-size: 16px;
+}
+
+.add-modal .word-container input:first-child {
+  margin-top: 0;
+}
+
+.add-modal .word-container .japanese {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+}
+
+.add-modal .match-area {
+  margin-top: 15px;
+  display: block;
+}
+
+.add-modal .match-area span {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.add-modal .match-area span em {
+  font-family: 'Roboto', sans-serif;
+}

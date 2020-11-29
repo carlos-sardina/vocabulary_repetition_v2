@@ -5,7 +5,8 @@ const wordsSchema = new Schema({
   meaning: { type: String, required: [true, "Meaning is required"] },
   times_played: { type: Number, default: 0 },
   created: { type: Date },
-  location: { type: String, default: 'ACTIVE' }
+  location: { type: String, default: 'ACTIVE' },
+  language: { type: String, required: [true, "Language is required"] }
 });
 
 export const Word = model("words", wordsSchema);

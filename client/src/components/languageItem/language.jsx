@@ -7,7 +7,7 @@ export default function language(props) {
 
   return (
     <div className='language-item' onClick={onClickEvent}>
-      <img src={data.img} alt="" />
+      <img src={data.img} alt={data.code} />
       <h1>{data.name}</h1>
     </div>
   )

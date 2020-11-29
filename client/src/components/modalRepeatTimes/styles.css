@@ -1,0 +1,23 @@
+.config-modal .actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-around;
+  margin-left: -20px;
+  width: calc(100% + 40px);
+  border-radius: 0 0 8px 8px;
+}
+
+.config-modal h2 {
+  font-weight: 200;
+  font-size: 20px;
+}
+
+.config-modal input {
+  width: 50%;
+  border: 1px solid #C7D0D8;
+  border-radius: 3px;
+  padding: 10px;
+  margin-top: 25px;
+  font-size: 24px;
+  text-align: center;
+}

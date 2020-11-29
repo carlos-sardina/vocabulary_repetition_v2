@@ -2,7 +2,9 @@ import { type as wordTypes } from "../actions/words";
 
 const initialState = {
   words: [],
-  selectedWord: null
+  selectedWord: null,
+  studiedAverage: 0,
+  repeat_times: null
 };
 
 const wordsReducer = (state = initialState, { type, payload }) => {
@@ -16,6 +18,16 @@ const wordsReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         selectedWord: payload
+      }
+    case wordTypes.set_average_times:
+      return {
+        ...state,
+        studiedAverage: payload
+      }
+    case wordTypes.set_repeat_times:
+      return {
+        ...state,
+        repeat_times: payload
       }
     default:
       return state

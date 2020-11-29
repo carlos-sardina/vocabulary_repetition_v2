@@ -13,7 +13,7 @@ function item(props) {
 
   // const { currentWordId } = this.props.state;
   const { _id, word, meaning, times_played } = props.data;
-  // const averageDiff = times_played - this.props.average;
+  const averageDiff = times_played - props.average;
 
   return (
     <div className="card-container" onClick={wordClickHandler}>
@@ -26,9 +26,7 @@ function item(props) {
           </div>
           <div className="inline-container mt2">
             <h4>{ meaning }</h4>
-            <span className={setTimesColor(times_played)}>+ 60</span>
-
-            {/* <span className={setTimesColor(times_played)}>{ Math.sign(averageDiff) === 1 ? '+' : null}{averageDiff}</span>*/ }
+            <span className={setTimesColor(times_played)}>{ Math.sign(averageDiff) === 1 ? '+' : null}{averageDiff}</span>
           </div>
         </div>
       </div>

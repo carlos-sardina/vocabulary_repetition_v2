@@ -18,6 +18,7 @@ class addEditModal extends Component {
       meaning: '',
       created: null,
       location: 'ACTIVE',
+      language: null,
       times_played: 0,
       wordsMatched: []
     }
@@ -72,10 +73,11 @@ class addEditModal extends Component {
     let statusCode;
     const word = this.state;
     word.created = moment().utc().format();
+    word.language = this.props.language.code;
     createWord(word)
       .then(res => {
         statusCode = res;
-        return updateActiveWordListFromAPI();
+        return updateActiveWordListFromAPI(this.props.language.code);
       })
       .then(() => {
         let message = statusCode === 201 ? "Created successfully" : statusCode === 200 ? "Moved to active" : '';
@@ -89,7 +91,7 @@ class addEditModal extends Component {
   // edit word endpoint
   editWordHandler = () => {
     editWord(this.state)
-      .then(() => updateActiveWordListFromAPI())
+      .then(() => updateActiveWordListFromAPI(this.props.language.code))
       .then(() => {
         this.props.setSelectedWord(this.state);
         this.closeAndResetState();
@@ -131,7 +133,8 @@ class addEditModal extends Component {
 const mapStateToProps = (state) => {
   return {
     isModalOpen: state.modalsReducer.addEditModal,
-    word: state.wordsReducer.selectedWord
+    word: state.wordsReducer.selectedWord,
+    language: state.languageReducer.language
   }
 }
 

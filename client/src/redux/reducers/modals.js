@@ -2,7 +2,8 @@ import { type as modalTypes } from "../actions/modals";
 
 const initialState = {
   addEditModal: false,
-  menuModal: false
+  menuModal: false,
+  repeatTimesModal: false
 };
 
 const modalsReducer = (state = initialState, { type, payload }) => {

@@ -1,9 +1,8 @@
 import axios from 'axios';
 
 export const getWords = (language) => {
-  console.log(language);
   return new Promise((resolve, reject) => {
-    axios.get(process.env.REACT_APP_SERVER_IP + '/words/list/active')
+    axios.get(process.env.REACT_APP_SERVER_IP + '/words/list/active/' + language)
       .then(res => resolve(res.data))
       .catch(err => reject(err));
   })

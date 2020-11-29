@@ -15,7 +15,17 @@ function menu(props) {
     props.setLanguage(null);
   }
 
-  const { isModalOpen } = props;
+  function createHandler() {
+    closeModal();
+    props.setModalStatus('addEditModal', true);
+  }
+
+  function repeatTimesHanlder() {
+    closeModal();
+    props.setModalStatus('repeatTimesModal', true);
+  }
+
+  const { isModalOpen, language } = props;
 
   return (
     <HyperModal
@@ -25,9 +35,11 @@ function menu(props) {
       classes={{contentClassName: 'menu-modal-container'}}
     >
       <div className="menu-modal">
-        <MenuItem icon="add" text="Create" />
+        {
+          language.code === 'all' ? null : <MenuItem icon="add" text="Create" onClickEvent={createHandler} />
+        }
         <MenuItem icon="play_arrow" text="Study" />
-        <MenuItem icon="update" text="Change times" customClass="smallest" />
+        <MenuItem icon="update" text="Change times" customClass="smallest" onClickEvent={repeatTimesHanlder} />
         <MenuItem icon="public" text="Switch Language" customClass="smallest" onClickEvent={switchLanguage} />
       </div>  
     </HyperModal>
@@ -36,7 +48,8 @@ function menu(props) {
 
 const mapStateToProps = (state) => {
   return {
-    isModalOpen: state.modalsReducer.menuModal
+    isModalOpen: state.modalsReducer.menuModal,
+    language: state.languageReducer.language
   }
 }
 

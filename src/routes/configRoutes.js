@@ -1,13 +1,11 @@
 import { Router } from "express";
 import getConfig from "../controllers/config/get";
-import updateConfig from "../controllers/config/update";
+import updateTimesToRepeat from "../controllers/config/updateTimesToRepeat";
 import install from "../controllers/config/install";
-import timesPlayed from "../controllers/config/timesPlayed";
 const router = Router();
 
-router.get('/', getConfig);
+router.get('/load/:language', getConfig);
 router.get('/install', install);
-router.post('/update/:id', updateConfig);
-router.get('/times_played', timesPlayed);
+router.post('/update/:id', updateTimesToRepeat);
 
 export default router;

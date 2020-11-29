@@ -1,9 +1,14 @@
-import React from 'react'
+import React from 'react';
+import './styles.css';
 
 export default function language(props) {
+
+  const { data, onClickEvent } = props;
+
   return (
-    <div>
-      <img src={props.data.img} alt=""/>
+    <div className='language-item' onClick={onClickEvent}>
+      <img src={data.img} alt="" />
+      <h1>{data.name}</h1>
     </div>
   )
 }

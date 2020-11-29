@@ -1,0 +1,13 @@
+.language-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+  padding: 15px 25px;
+  border-radius: 5px;
+}
+
+.language-item img {
+  width: 7vw;
+  height: 5vw;
+  margin-right: 20px;
+}

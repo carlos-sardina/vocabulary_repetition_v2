@@ -1,28 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { setLanguage, setWordsList } from '../../redux/actions';
 import { updateActiveWordListFromAPI } from '.././../util';
 import LanguageItem from '../../components/languageItem/language';
 import { languages } from '../../data/availableLanguages';
+import './styles.css'
 
-export class welcomeScreen extends Component {
+function welcomeScreen(props) {
 
-  componentDidMount() {
-    // this.props.setLanguage('ENG');
-
-    updateActiveWordListFromAPI()
+  function setLanguageHandler(code) {
+    props.setLanguage(code);
+    updateActiveWordListFromAPI(code)
       .catch(err => console.log(err))
   }
 
-  render() {
-    return (
-      <>
-        {
-          languages.map(lang => <LanguageItem data={lang} />)
-        }
-      </>
-    )
-  }
+  return (
+    <div className='welcomeScreen'>
+      {
+        languages.map(lang => <LanguageItem key={lang.code} data={lang} onClickEvent={() => setLanguageHandler(lang.code)} />)
+      }
+    </div>
+  )
 }
 
 const mapDispatchToProps = {

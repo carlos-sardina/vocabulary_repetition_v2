@@ -1,7 +1,7 @@
 import React from 'react';
 import HyperModal from 'react-hyper-modal';
 import { connect } from 'react-redux';
-import { setModalStatus } from '../../redux/actions';
+import { setModalStatus, setLanguage } from '../../redux/actions';
 import MenuItem from '../menuItem/menuItem';
 
 function menu(props) {
@@ -9,6 +9,11 @@ function menu(props) {
   function closeModal() {
     props.setModalStatus('menuModal', false);
   };
+
+  function switchLanguage() {
+    closeModal();
+    props.setLanguage(null);
+  }
 
   const { isModalOpen } = props;
 
@@ -23,7 +28,7 @@ function menu(props) {
         <MenuItem icon="add" text="Create" />
         <MenuItem icon="play_arrow" text="Study" />
         <MenuItem icon="update" text="Change times" customClass="smallest" />
-        <MenuItem icon="public" text="Switch Language" customClass="smallest" />
+        <MenuItem icon="public" text="Switch Language" customClass="smallest" onClickEvent={switchLanguage} />
       </div>  
     </HyperModal>
   );
@@ -36,7 +41,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  setModalStatus
+  setModalStatus,
+  setLanguage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(menu);

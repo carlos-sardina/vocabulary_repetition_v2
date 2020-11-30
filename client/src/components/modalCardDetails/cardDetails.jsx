@@ -4,11 +4,14 @@ import { connect } from 'react-redux';
 import { setSelectedWord, setModalStatus } from '../../redux/actions';
 import Tag from '../tag/tag';
 import Button from '../button/button';
-import { setTimesColor, updateActiveWordListFromAPI, Speech, GoogleLanguage } from '../../util'
+import { setTimesColor, updateActiveWordListFromAPI, Speech, Player, DOMLoader } from '../../util'
 import moment from "moment";
 import { deleteWord, setWordAsLearned } from '../../services/words';
+import { toast } from 'react-toastify';
 
 function cardDetails(props) {
+
+  let isFirstTime = true;
 
   function closeModal() {
     props.setSelectedWord(null);
@@ -27,7 +30,7 @@ function cardDetails(props) {
     deleteWord(id)
       .then(res => updateActiveWordListFromAPI(props.language.code))
       .then(() => props.setSelectedWord(null))
-      .catch(err => console.log(err))
+      .catch(err => toast.error(err))
   }
 
   function moveToLearnedHandler(id) {
@@ -39,15 +42,17 @@ function cardDetails(props) {
     setWordAsLearned(id)
       .then(() => updateActiveWordListFromAPI(props.language.code))
       .then(() => props.setSelectedWord(null))
-      .catch(err => console.log(err))
+      .catch(err => toast.error(err))
   }
 
   function readWord(word) {
+    DOMLoader.show();
     Speech.open();
     setTimeout(() => {
-      Speech.readText(word.word, GoogleLanguage.getFromCode(word.language));
-      Speech.readText(word.meaning, GoogleLanguage.spanish());
-    }, 10);
+      isFirstTime = false;
+      DOMLoader.hidde();
+      Player.play([word])
+    }, isFirstTime ? 600 : 200);
   }
 
   const { word } = props;

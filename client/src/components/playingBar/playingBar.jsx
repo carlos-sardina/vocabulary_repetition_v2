@@ -1,10 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './styles.css';
 
-export default function playingBar() {
-  const totalWords = 190;
-  const current = 25;
-  const estimatedTime = 150;
+function playingBar(props) {
+
+  const { totalWords, current, estimatedTime } = props.playerReducer;
 
   return (
     <div className="playing-bar" id="player">
@@ -18,3 +18,15 @@ export default function playingBar() {
     </div>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    playerReducer: state.playerReducer
+  }
+}
+
+const mapDispatchToProps = {
+  
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(playingBar)

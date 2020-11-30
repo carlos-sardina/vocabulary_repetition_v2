@@ -3,7 +3,7 @@ import HyperModal from 'react-hyper-modal';
 import { connect } from 'react-redux';
 import { setModalStatus, setLanguage, setWordsList } from '../../redux/actions';
 import MenuItem from '../menuItem/menuItem';
-import { Player, Speech } from '../../util'
+import { Player, Speech, DOMLoader } from '../../util'
 
 function menu(props) {
 
@@ -28,11 +28,13 @@ function menu(props) {
   }
 
   function playWordsHandler() {
-    closeModal();
     Speech.open();
+    DOMLoader.show();
+    closeModal();
     setTimeout(() => {
-      Player.play(props.words, 3);
-    }, 1000);
+      DOMLoader.hidde();
+      Player.play(props.words.words, props.words.repeat_times.repeat_times);
+    }, 1300);
   }
 
   const { isModalOpen, language } = props;
@@ -60,7 +62,7 @@ const mapStateToProps = (state) => {
   return {
     isModalOpen: state.modalsReducer.menuModal,
     language: state.languageReducer.language,
-    words: state.wordsReducer.words
+    words: state.wordsReducer
   }
 }
 

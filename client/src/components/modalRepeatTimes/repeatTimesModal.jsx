@@ -3,7 +3,8 @@ import HyperModal from 'react-hyper-modal';
 import { connect } from 'react-redux';
 import { setModalStatus, setRepeatTimes } from '../../redux/actions';
 import ModalBtn from '../button/button';
-import { updateTimesToRepeat } from '../../services/config'
+import { updateTimesToRepeat } from '../../services/config';
+import { toast } from 'react-toastify';
 
 class repeatTimes extends Component {
 
@@ -40,15 +41,16 @@ class repeatTimes extends Component {
     times = parseInt(times);
 
     if(!times) {
-      return console.log('not a number')
+      return toast.warn('Not a number');
     }
 
     updateTimesToRepeat(id, times)
       .then(config => {
         this.props.setRepeatTimes(config);
-        console.log('Times updated');
+        this.closeModal();
+        toast.success('Updated');
       })
-      .catch(err => console.log(err))
+      .catch(err => toast.error(err))
   }
 
   render() {

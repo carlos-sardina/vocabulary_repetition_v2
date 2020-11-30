@@ -47,3 +47,11 @@ export const matchWord = (value) => {
       .catch(err => reject(err));
   })
 };
+
+export const addTimeCounted = (id) => {
+  return new Promise((resolve, reject) => {
+    axios.patch(process.env.REACT_APP_SERVER_IP + '/words/update/' + id + '/counter')
+      .then(res => resolve(res))
+      .catch(err => reject(err));
+  })
+};

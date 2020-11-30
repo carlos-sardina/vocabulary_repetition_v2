@@ -4,3 +4,6 @@ export * from './setInitialData';
 export * from './tts';
 export * from './googleCodes';
 export * from './player';
+export * from './numbers';
+export * from './player_bar';
+export * from './DOMLoader';

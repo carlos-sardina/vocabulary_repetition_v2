@@ -5,7 +5,8 @@ import { updateActiveWordListFromAPI, setInitialData } from '.././../util';
 import LanguageItem from '../../components/languageItem/language';
 import { languages } from '../../data/availableLanguages';
 import { getConfig } from '../../services/config';
-import './styles.css'
+import './styles.css';
+import { toast } from 'react-toastify';
 
 function welcomeScreen(props) {
 
@@ -16,7 +17,7 @@ function welcomeScreen(props) {
         props.setLanguage(lang);
         return updateActiveWordListFromAPI(lang.code);
       })
-      .catch(err => console.log(err))
+      .catch(err => toast.error(err))
   }
 
   return (

@@ -5,7 +5,8 @@ import { setModalStatus, setSelectedWord } from '../../redux/actions';
 import Button from '../button/button';
 import { matchWord, createWord, editWord } from '../../services/words';
 import moment from "moment";
-import { updateActiveWordListFromAPI } from '../../util'
+import { updateActiveWordListFromAPI } from '../../util';
+import { toast } from 'react-toastify';
 
 class addEditModal extends Component {
 
@@ -50,7 +51,7 @@ class addEditModal extends Component {
     if(name === "word" && value) {
       matchWord(value)
         .then(done => this.setState({ wordsMatched: done.data }))
-        .catch(err => console.log(err))
+        .catch(err => toast.error(err))
     }
   }
   // validator and switcher between endpoints
@@ -58,7 +59,7 @@ class addEditModal extends Component {
     const { _id, word, meaning, wordsMatched } = this.state;
 
     if(word === '' || (wordsMatched.length === 0 && meaning === '')) {
-      return console.log('all fields required')
+      return toast.warn('All fields required');
     }
 
     if (_id) {
@@ -83,9 +84,9 @@ class addEditModal extends Component {
         let message = statusCode === 201 ? "Created successfully" : statusCode === 200 ? "Moved to active" : '';
         document.getElementById('word_input').focus();
         this.setState(this.initialState);
-        console.log(message);
+        toast.success(message);
       })
-      .catch(err => console.log(err))
+      .catch(err => toast.error(err))
   }
 
   // edit word endpoint
@@ -96,7 +97,7 @@ class addEditModal extends Component {
         this.props.setSelectedWord(this.state);
         this.closeAndResetState();
       })
-      .catch(err => console.log(err))
+      .catch(err => toast.error(err))
   }
     
   render() {

@@ -11,9 +11,9 @@ function item(props) {
     props.setSelectedWord(props.data);
   }
 
-  // const { currentWordId } = this.props.state;
   const { _id, word, meaning, times_played } = props.data;
   const averageDiff = times_played - props.average;
+  const currentWordId = props.playerReducer.playing_id;
 
   return (
     <div className="card-container" onClick={wordClickHandler}>
@@ -21,8 +21,7 @@ function item(props) {
         <div className="word-container">
           <div className="inline-container">
             <h3>{ word }</h3>
-            <PlayingTooltip />
-            {/* currentWordId === _id ? <PlayingTooltip /> : null*/ }
+            { currentWordId === _id ? <PlayingTooltip /> : <h5>{times_played}t.</h5> }
           </div>
           <div className="inline-container mt2">
             <h4>{ meaning }</h4>
@@ -34,8 +33,14 @@ function item(props) {
   )
 }
 
+const mapStateToProps = (state) => {
+  return {
+    playerReducer: state.playerReducer
+  }
+}
+
 const mapDispatchToProps = {
   setSelectedWord
 }
 
-export default connect(null, mapDispatchToProps)(item);
+export default connect(mapStateToProps, mapDispatchToProps)(item);

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setSelectedWord, setModalStatus } from '../../redux/actions';
 import Tag from '../tag/tag';
 import Button from '../button/button';
-import { setTimesColor, updateActiveWordListFromAPI } from '../../util'
+import { setTimesColor, updateActiveWordListFromAPI, Speech, GoogleLanguage } from '../../util'
 import moment from "moment";
 import { deleteWord, setWordAsLearned } from '../../services/words';
 
@@ -37,9 +37,17 @@ function cardDetails(props) {
     }
 
     setWordAsLearned(id)
-      .then(res => updateActiveWordListFromAPI(props.language.code))
+      .then(() => updateActiveWordListFromAPI(props.language.code))
       .then(() => props.setSelectedWord(null))
       .catch(err => console.log(err))
+  }
+
+  function readWord(word) {
+    Speech.open();
+    setTimeout(() => {
+      Speech.readText(word.word, GoogleLanguage.getFromCode(word.language));
+      Speech.readText(word.meaning, GoogleLanguage.spanish());
+    }, 10);
   }
 
   const { word } = props;
@@ -67,7 +75,7 @@ function cardDetails(props) {
         <div className="actions">
           <Button tagClass="btn_bc_red" icon="delete" text="DELETE" onClickEvent={() => deleteWordHandler(word._id)} />
           <Button tagClass="btn_bc_yellow" icon="edit" text="EDIT" onClickEvent={() => editWordHandler(word._id)}/>
-          <Button tagClass="btn_bc_blue" icon="record_voice_over" text="PLAY" />
+          <Button tagClass="btn_bc_blue" icon="record_voice_over" text="PLAY" onClickEvent={() => readWord(word)} />
           <Button tagClass="btn_bc_green" icon="save" text="STORE" onClickEvent={() => moveToLearnedHandler(word._id) } />
         </div>
       </div>

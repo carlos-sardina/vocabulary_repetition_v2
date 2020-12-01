@@ -4,7 +4,7 @@ export const languages = [
     code: 'en',
     img: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg',
     google_id_pc: 'Google US English',
-    google_id_mobile: '',
+    google_id_mobile: 'inglés Estados Unidos',
   },
   {
     name: '日本語',

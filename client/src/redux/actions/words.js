@@ -3,6 +3,7 @@ export const type = {
   set_selected_word: "SET_SELECTED_WORD",
   set_average_times: "SET_AVERAGE_TIMES",
   set_repeat_times: "SET_REPEAT_TIMES",
+  add_reproduced_time: "ADD_REPRODUCED_TIME"
 };
 
 export const setWordsList = (words) => ({
@@ -24,3 +25,9 @@ export const setRepeatTimes = (times) => ({
   type: type.set_repeat_times,
   payload: times
 });
+
+export const addReproducedTime = (id) => ({
+  type: type.add_reproduced_time,
+  payload: id
+});
+

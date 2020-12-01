@@ -29,6 +29,18 @@ const wordsReducer = (state = initialState, { type, payload }) => {
         ...state,
         repeat_times: payload
       }
+    case wordTypes.add_reproduced_time:
+      const words = state.words.map(word => {
+        if(word._id === payload) {
+          word.times_played = word.times_played + 1; 
+        }
+
+        return word;
+      })
+      return {
+        ...state,
+        words
+      }
     default:
       return state
   }

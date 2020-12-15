@@ -8,22 +8,23 @@ export const Speech = {
    */
   readText: (text, lang) => {
     return new Promise((resolve, reject) => {
-      console.log(lang);
       const synth = window.speechSynthesis;
       let voices = synth.getVoices();
 
       let timer = setInterval(() => {
         if(!voices.length) {
-          console.log(voices)
           voices = synth.getVoices();
         } else {
-          console.log(voices)
           clearInterval(timer);
           DOMLoader.hidde();
 
-          const textToRead = new SpeechSynthesisUtterance(text);
-          textToRead.voice = voices.filter(voice => voice.voiceURI === lang)[0];
-          console.log(voices.filter(voice => voice.voiceURI === lang)[0])
+          let textToRead = new SpeechSynthesisUtterance(text);
+
+          const chosenItem = voices.filter(voice => voice.voiceURI === lang)[0];
+          textToRead.voice = chosenItem;
+          textToRead.lang = chosenItem.lang;
+
+          console.log(textToRead)
           synth.speak(textToRead);
           textToRead.onend = () => resolve();
         }

@@ -2,7 +2,7 @@
   "apps": [
       {
           "name": "vocabulary-repetition",
-          "script": "env-cmd -f ./.env.production babel-node index.js",
+          "script": "./node_modules/env-cmd -f ./.env.production ./node_modules/babel-node index.js",
           "args" : "start"
       }
   ]

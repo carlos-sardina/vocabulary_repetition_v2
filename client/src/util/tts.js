@@ -13,9 +13,6 @@ export const Speech = {
       const voices = synth.getVoices();
       const textToRead = new SpeechSynthesisUtterance(text);
 
-      console.log(voices);
-      
-
       if (voices.length) {
         textToRead.voice = voices.filter(voice => (isMobile ? voice.lang : voice.voiceURI) === lang)[0];
         synth.speak(textToRead);

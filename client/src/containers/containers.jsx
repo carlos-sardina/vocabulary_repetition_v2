@@ -3,11 +3,13 @@ import { connect } from 'react-redux'
 import Dashboard from './dashboard';
 import Welcome from './welcome/welcomeScreen';
 import { DOMLoader } from '../util'
+import { Speech } from '../util'
 
 class Containers extends Component {
 
   componentDidMount() {
     DOMLoader.hidde();
+    console.log(Speech.getVoices())
   }
 
   render() {

@@ -34,11 +34,6 @@ function cardDetails(props) {
   }
 
   function moveToLearnedHandler(id) {
-    const confirmation = window.confirm("Are you sure?");
-    if (confirmation !== true) {
-      return;
-    }
-
     setWordAsLearned(id)
       .then(() => updateActiveWordListFromAPI(props.language.code))
       .then(() => props.setSelectedWord(null))

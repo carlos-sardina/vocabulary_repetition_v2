@@ -9,7 +9,12 @@ function App() {
   return (
     <Provider store={Store}>
       <Container />
-      <ToastContainer autoClose={3000} />
+      <ToastContainer
+        autoClose={3000}
+        position="bottom-right"
+        pauseOnHover={false}
+        pauseOnFocusLoss={false}
+      />
     </Provider>
   )
 }

@@ -42,6 +42,12 @@ class addEditModal extends Component {
     this.setState(this.initialState);
   }
 
+  handleKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === 'Return' ) {
+      this.addEditWord();
+    }
+  }
+
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({
@@ -114,7 +120,7 @@ class addEditModal extends Component {
         <div className="add-modal">
             <div className="word-container">
               <input id='word_input' autoComplete="off" className="japanese" type="text" placeholder="Word" lang="jp" value={word} name="word" onChange={this.handleChange} />
-              <input disabled={wordsMatched.length > 0} autoComplete="off" type="text" placeholder="Meaning" lang="es" value={meaning} name="meaning" onChange={this.handleChange} />
+              <input disabled={wordsMatched.length > 0} autoComplete="off" type="text" placeholder="Meaning" lang="es" value={meaning} name="meaning" onChange={this.handleChange} onKeyDown={this.handleKeyDown} />
             </div>
             <div className="match-area">
               {

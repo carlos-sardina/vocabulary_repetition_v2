@@ -1,4 +1,4 @@
-import { isMobile } from "react-device-detect";
+import { DOMLoader } from './index';
 
 export const Speech = {
   /**
@@ -9,17 +9,22 @@ export const Speech = {
   readText: (text, lang) => {
     return new Promise((resolve, reject) => {
       const synth = window.speechSynthesis;
+      let voices = synth.getVoices();
 
-      const voices = synth.getVoices();
-      const textToRead = new SpeechSynthesisUtterance(text);
+      let timer = setInterval(() => {
+        if(!voices.length) {
+          voices = synth.getVoices();
+        } else {
+          clearInterval(timer);
+          DOMLoader.hidde();
 
-      if (voices.length) {
-        textToRead.voice = voices.filter(voice => (isMobile ? voice.lang : voice.voiceURI) === lang)[0];
-        synth.speak(textToRead);
-      }
-      textToRead.onend = () => resolve();
-    })
+          const textToRead = new SpeechSynthesisUtterance(text);
+          textToRead.voice = voices.filter(voice => voice.voiceURI === lang)[0];
+          synth.speak(textToRead);
+          textToRead.onend = () => resolve();
+        }
+      }, 200);
+    });
   },
-  getVoices: () => window.speechSynthesis.getVoices(),
-  open: () => window.speechSynthesis
+  getVoices: () => window.speechSynthesis.getVoices()
 };

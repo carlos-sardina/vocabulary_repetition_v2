@@ -4,14 +4,12 @@ import { connect } from 'react-redux';
 import { setSelectedWord, setModalStatus } from '../../redux/actions';
 import Tag from '../tag/tag';
 import Button from '../button/button';
-import { setTimesColor, updateActiveWordListFromAPI, Speech, Player, DOMLoader } from '../../util'
+import { setTimesColor, updateActiveWordListFromAPI, Player, DOMLoader } from '../../util'
 import moment from "moment";
 import { deleteWord, setWordAsLearned } from '../../services/words';
 import { toast } from 'react-toastify';
 
 function cardDetails(props) {
-
-  let isFirstTime = true;
 
   function closeModal() {
     props.setSelectedWord(null);
@@ -42,12 +40,7 @@ function cardDetails(props) {
 
   function readWord(word) {
     DOMLoader.show();
-    Speech.open();
-    setTimeout(() => {
-      isFirstTime = false;
-      DOMLoader.hidde();
-      Player.play([word])
-    }, isFirstTime ? 600 : 200);
+    Player.play([word])
   }
 
   const { word } = props;

@@ -13,8 +13,10 @@ export const Speech = {
 
       let timer = setInterval(() => {
         if(!voices.length) {
+          console.log(voices)
           voices = synth.getVoices();
         } else {
+          console.log(voices)
           clearInterval(timer);
           DOMLoader.hidde();
 

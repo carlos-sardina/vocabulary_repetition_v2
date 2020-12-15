@@ -1,4 +1,4 @@
-import { languages } from "../data/availableLanguages";
+import { isMobile } from "react-device-detect";
 
 export const Speech = {
   /**
@@ -6,15 +6,16 @@ export const Speech = {
    * @param {String} text Text to speech
    * @param {String} language Type voice
    */
-  readText: (text, language) => {
+  readText: (text, lang) => {
     return new Promise((resolve, reject) => {
       const synth = window.speechSynthesis;
 
       const voices = synth.getVoices();
       const textToRead = new SpeechSynthesisUtterance(text);
+      
 
       if (voices.length) {
-        textToRead.voice = voices.filter(voice => voice.voiceURI === language)[0];
+        textToRead.voice = voices.filter(voice => (isMobile ? voice.lang : voice.voiceURI) === lang)[0];
         synth.speak(textToRead);
       }
       textToRead.onend = () => resolve();

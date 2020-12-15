@@ -24,7 +24,6 @@ export const Speech = {
           textToRead.voice = chosenItem;
           textToRead.lang = chosenItem.lang;
 
-          console.log(textToRead)
           synth.speak(textToRead);
           textToRead.onend = () => resolve();
         }

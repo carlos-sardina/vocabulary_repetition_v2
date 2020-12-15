@@ -8,6 +8,7 @@ export const Speech = {
    */
   readText: (text, lang) => {
     return new Promise((resolve, reject) => {
+      console.log(lang);
       const synth = window.speechSynthesis;
       let voices = synth.getVoices();
 
@@ -22,6 +23,7 @@ export const Speech = {
 
           const textToRead = new SpeechSynthesisUtterance(text);
           textToRead.voice = voices.filter(voice => voice.voiceURI === lang)[0];
+          console.log(voices.filter(voice => voice.voiceURI === lang)[0])
           synth.speak(textToRead);
           textToRead.onend = () => resolve();
         }

@@ -7,14 +7,22 @@ import { DOMLoader } from '../util'
 class Containers extends Component {
 
   componentDidMount() {
-    DOMLoader.hidde();
-    setTimeout(() => {
-      console.log(window.speechSynthesis)
-    }, 1000);
 
-    setTimeout(() => {
-      console.log(window.speechSynthesis.getVoices())
-    }, 2000);
+    let voiceData = window.speechSynthesis.getVoices();
+    console.log(voiceData)
+
+    DOMLoader.hidde();
+
+    let timer = setInterval(() => {
+      if(!voiceData.length) {
+          voiceData = window.speechSynthesis.getVoices();
+          console.log(voiceData)
+      } else {
+        console.log(voiceData)
+          clearInterval(timer);
+      }
+    }, 500);
+
   }
 
   render() {

@@ -7,7 +7,7 @@
   border-radius: 0 0 8px 8px;
 }
 
-.add-modal .word-container input {
+.add-modal .word-container input, .add-modal .word-container select {
   border: 1px solid #C7D0D8;
   border-radius: 3px;
   padding: 10px;

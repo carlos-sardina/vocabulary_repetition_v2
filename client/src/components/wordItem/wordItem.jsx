@@ -28,7 +28,7 @@ function item(props) {
           <div className="inline-container mt2">
             <h4>{ meaning }</h4>
             <div className="flag-avg-container">
-              { props.flag && <img src={ imgURL } alt="lang flag"/> }
+              <img src={ imgURL } alt="lang flag"/>
               <span className={setTimesColor(times_played)}>{ Math.sign(averageDiff) === 1 ? '+' : null}{averageDiff}</span>
             </div>
           </div>

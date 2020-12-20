@@ -7,6 +7,7 @@ import { matchWord, createWord, editWord } from '../../services/words';
 import moment from "moment";
 import { updateActiveWordListFromAPI } from '../../util';
 import { toast } from 'react-toastify';
+import { languages } from '../../data/availableLanguages';
 
 class addEditModal extends Component {
 
@@ -19,7 +20,7 @@ class addEditModal extends Component {
       meaning: '',
       created: null,
       location: 'ACTIVE',
-      language: null,
+      language: languages[0].code,
       times_played: 0,
       wordsMatched: []
     }
@@ -85,15 +86,15 @@ class addEditModal extends Component {
     let statusCode;
     const word = this.state;
     word.created = moment().utc().format();
-    word.language = this.props.language.code;
     createWord(word)
       .then(res => {
         statusCode = res;
-        return updateActiveWordListFromAPI(this.props.language.code);
+        return updateActiveWordListFromAPI();
       })
       .then(() => {
         let message = statusCode === 201 ? "Created successfully" : statusCode === 200 ? "Moved to active" : '';
         this.setState(this.initialState);
+        this.setState({ language: word.language })
         toast.success(message);
       })
       .catch(err => toast.error(err))
@@ -102,7 +103,7 @@ class addEditModal extends Component {
   // edit word endpoint
   editWordHandler = () => {
     editWord(this.state)
-      .then(() => updateActiveWordListFromAPI(this.props.language.code))
+      .then(() => updateActiveWordListFromAPI())
       .then(() => {
         this.props.setSelectedWord(this.state);
         this.closeAndResetState();
@@ -125,6 +126,11 @@ class addEditModal extends Component {
             <div className="word-container">
               <input id='word_input' autoComplete="off" className="japanese" type="text" placeholder="Word" lang="jp" value={word} name="word" onChange={this.handleChange} onKeyDown={this.handleKeyDown}/>
               <input id='meaning_input' disabled={wordsMatched.length > 0} autoComplete="off" type="text" placeholder="Meaning" lang="es" value={wordsMatched.length > 0 ? wordsMatched[0].meaning : meaning} name="meaning" onChange={this.handleChange} onKeyDown={this.handleKeyDown} />
+              <select name="language" onChange={this.handleChange} value={wordsMatched.length > 0 ? wordsMatched[0].language : this.state.language} disabled={wordsMatched.length > 0}>
+                {
+                  languages.map(l => <option key={l.code} value={l.code}>{l.name}</option>)
+                }
+              </select>
             </div>
             <div className="match-area">
               {
@@ -144,8 +150,7 @@ class addEditModal extends Component {
 const mapStateToProps = (state) => {
   return {
     isModalOpen: state.modalsReducer.addEditModal,
-    word: state.wordsReducer.selectedWord,
-    language: state.languageReducer.language
+    word: state.wordsReducer.selectedWord
   }
 }
 

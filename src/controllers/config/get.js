@@ -4,14 +4,7 @@ import { Word } from "../../models/Words";
 export default async (req, res) => {
   try {
     const config = await Config.find();
-
-    let language = req.params.language;
-    let conditions = { language };
-    if(language == 'all') {
-      delete conditions.language;
-    }
-
-    const words = await Word.find().where(conditions);
+    const words = await Word.find();
     const total_documents = words.length;
     const times_played = words.reduce((sum, curr) => sum + curr.times_played, 0);
     const average = times_played / total_documents;

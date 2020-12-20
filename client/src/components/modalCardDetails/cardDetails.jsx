@@ -27,14 +27,14 @@ function cardDetails(props) {
     }
 
     deleteWord(id)
-      .then(res => updateActiveWordListFromAPI(props.language.code))
+      .then(res => updateActiveWordListFromAPI())
       .then(() => props.setSelectedWord(null))
       .catch(err => toast.error(err))
   }
 
   function moveToLearnedHandler(id) {
     setWordsAsLearned([id])
-      .then(() => updateActiveWordListFromAPI(props.language.code))
+      .then(() => updateActiveWordListFromAPI())
       .then(() => props.setSelectedWord(null))
       .catch(err => toast.error(err))
   }
@@ -82,8 +82,7 @@ function cardDetails(props) {
 
 const mapStateToProps = (state) => {
   return {
-    word: state.wordsReducer.selectedWord,
-    language: state.languageReducer.language
+    word: state.wordsReducer.selectedWord
   }
 }
 

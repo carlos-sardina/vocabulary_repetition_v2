@@ -2,13 +2,11 @@ import { createStore, combineReducers } from 'redux'
 
 import modalsReducer from "./reducers/modals";
 import wordsReducer from "./reducers/words";
-import languageReducer from "./reducers/language";
 import playerReducer from "./reducers/player";
 
 const reducer = combineReducers({
   modalsReducer,
   wordsReducer,
-  languageReducer,
   playerReducer
 });
 

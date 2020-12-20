@@ -12,10 +12,5 @@ export const languages = [
     img: 'https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg',
     google_id_pc: 'Google 日本語',
     google_id_mobile: 'japonés Japón',
-  },
-  {
-    name: 'All languages',
-    code: 'all',
-    img: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_the_United_Nations.svg'
   }
 ]

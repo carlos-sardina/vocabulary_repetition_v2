@@ -9,7 +9,7 @@ import matchWords from "../controllers/words/match";
 const router = Router();
 
 router.get('/list/active/:language', listActiveWords);
-router.put('/setLearned/:id', moveToLearned);
+router.post('/setLearned', moveToLearned);
 router.post('/create', create);
 router.delete('/delete/:id', del);
 router.put('/update/:id', update);

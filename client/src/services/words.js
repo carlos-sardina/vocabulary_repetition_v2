@@ -16,9 +16,12 @@ export const deleteWord = (id) => {
   })
 };
 
-export const setWordAsLearned = (id) => {
+export const setWordsAsLearned = (wordsList) => {
   return new Promise((resolve, reject) => {
-    axios.put(process.env.REACT_APP_SERVER_IP + '/words/setLearned/' + id)
+    if(!Array.isArray(wordsList)) {
+      return reject('Not an array');
+    }
+    axios.post(process.env.REACT_APP_SERVER_IP + '/words/setLearned', { words: wordsList })
       .then(res => resolve(res))
       .catch(err => reject(err));
   })

@@ -44,7 +44,12 @@ class addEditModal extends Component {
 
   handleKeyDown = (e) => {
     if (e.key === 'Enter' || e.key === 'Return' ) {
-      this.addEditWord();
+      if(e.target.name === 'meaning' || (this.state.wordsMatched.length > 0 && e.target.name === 'word')) {
+        this.addEditWord();
+        return document.getElementById('word_input').focus();
+      } else if(e.target.name === 'word') {
+        return document.getElementById('meaning_input').focus();;
+      }
     }
   }
 
@@ -88,7 +93,6 @@ class addEditModal extends Component {
       })
       .then(() => {
         let message = statusCode === 201 ? "Created successfully" : statusCode === 200 ? "Moved to active" : '';
-        document.getElementById('word_input').focus();
         this.setState(this.initialState);
         toast.success(message);
       })
@@ -119,12 +123,12 @@ class addEditModal extends Component {
       >
         <div className="add-modal">
             <div className="word-container">
-              <input id='word_input' autoComplete="off" className="japanese" type="text" placeholder="Word" lang="jp" value={word} name="word" onChange={this.handleChange} />
-              <input disabled={wordsMatched.length > 0} autoComplete="off" type="text" placeholder="Meaning" lang="es" value={meaning} name="meaning" onChange={this.handleChange} onKeyDown={this.handleKeyDown} />
+              <input id='word_input' autoComplete="off" className="japanese" type="text" placeholder="Word" lang="jp" value={word} name="word" onChange={this.handleChange} onKeyDown={this.handleKeyDown}/>
+              <input id='meaning_input' disabled={wordsMatched.length > 0} autoComplete="off" type="text" placeholder="Meaning" lang="es" value={wordsMatched.length > 0 ? wordsMatched[0].meaning : meaning} name="meaning" onChange={this.handleChange} onKeyDown={this.handleKeyDown} />
             </div>
             <div className="match-area">
               {
-                wordsMatched.map(w => <span key={w._id}>{w.word}: <em>{w.meaning}</em></span>)
+                wordsMatched.length > 1 && <span style={{color: 'red'}}><em>{wordsMatched.length} results with same word (POSSIBLE DUPLICATION)</em></span>
               }
             </div>
             <div className="actions">

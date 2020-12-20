@@ -14,7 +14,7 @@ export const languages = [
     google_id_mobile: 'japonés Japón',
   },
   {
-    name: 'All',
+    name: 'All languages',
     code: 'all',
     img: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Flag_of_the_United_Nations.svg'
   }

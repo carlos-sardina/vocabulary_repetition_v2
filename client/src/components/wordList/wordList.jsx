@@ -3,12 +3,17 @@ import WordItem from '../wordItem/wordItem';
 import { connect } from 'react-redux'
 
 function WordList(props) {
-  const { words, average } = props;
+  const { words, average, language } = props;
 
     return (
       <div className="main_content">
         {
-          words.map(word => <WordItem key={word._id} data={word} average={average} />)
+          words.map(word => <WordItem
+            key={word._id}
+            data={word}
+            average={average}
+            flag={language.code === 'all'}
+          />)
         }
       </div>
     )
@@ -16,7 +21,8 @@ function WordList(props) {
 
 const mapStateToProps = (state) => ({
   words: state.wordsReducer.words,
-  average: state.wordsReducer.studiedAverage
+  average: state.wordsReducer.studiedAverage,
+  language: state.languageReducer.language,
 })
 
 

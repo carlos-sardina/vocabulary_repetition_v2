@@ -6,8 +6,9 @@ import Tag from '../tag/tag';
 import Button from '../button/button';
 import { setTimesColor, updateActiveWordListFromAPI, Player, DOMLoader } from '../../util'
 import moment from "moment";
-import { deleteWord, setWordAsLearned } from '../../services/words';
+import { deleteWord, setWordsAsLearned } from '../../services/words';
 import { toast } from 'react-toastify';
+import { languages } from '../../data/availableLanguages';
 
 function cardDetails(props) {
 
@@ -32,7 +33,7 @@ function cardDetails(props) {
   }
 
   function moveToLearnedHandler(id) {
-    setWordAsLearned(id)
+    setWordsAsLearned([id])
       .then(() => updateActiveWordListFromAPI(props.language.code))
       .then(() => props.setSelectedWord(null))
       .catch(err => toast.error(err))
@@ -64,6 +65,7 @@ function cardDetails(props) {
         <div className="tag-container">
           <Tag text={"Listened " + word?.times_played + (word?.times_played === 1 ? ' time' : ' times')} icon="access_time" bg_color={setTimesColor(word?.times_played)} />
           <Tag text={daysDifference === 0 ? 'Created today' : "Created " + daysDifference.toString().replace(/\-/g, '') + " days ago" } icon="history" bg_color="bg_gray" />
+          <Tag text={languages.find(l => l.code === word.language).name} icon="public" bg_color="bg_purple" />
         </div>
         <div className="actions">
           <Button tagClass="btn_bc_red" icon="delete" text="DELETE" onClickEvent={() => deleteWordHandler(word._id)} />

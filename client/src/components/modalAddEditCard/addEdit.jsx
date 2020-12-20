@@ -139,7 +139,9 @@ class addEditModal extends Component {
             </div>
             <div className="actions">
               <Button tagClass="btn_bc_blue" icon="close" text="CLOSE" onClickEvent={this.closeAndResetState} />
-              <Button tagClass="btn_bc_green" icon={_id ? 'save': 'backup'} text={_id ? 'SAVE': wordsMatched.length === 0 ? 'ADD' : 'SET ACTIVE'} onClickEvent={this.addEditWord} />
+              {
+                ((_id && !wordsMatched.length > 0) || (!_id)) && <Button tagClass="btn_bc_green" icon={_id ? 'save': 'backup'} text={_id ? 'SAVE': wordsMatched.length === 0 ? 'ADD' : 'SET ACTIVE'} onClickEvent={this.addEditWord} /> 
+              }
             </div>
           </div>
       </HyperModal>

@@ -19,6 +19,7 @@ class addEditModal extends Component {
       word: '',
       meaning: '',
       created: null,
+      image_url: '',
       location: 'ACTIVE',
       language: languages[0].code,
       times_played: 0,
@@ -45,7 +46,7 @@ class addEditModal extends Component {
 
   handleKeyDown = (e) => {
     if (e.key === 'Enter' || e.key === 'Return' ) {
-      if(e.target.name === 'meaning' || (this.state.wordsMatched.length > 0 && e.target.name === 'word')) {
+      if(e.target.name === 'image_url' || e.target.name === 'meaning' || (this.state.wordsMatched.length > 0 && e.target.name === 'word')) {
         this.addEditWord();
         return document.getElementById('word_input').focus();
       } else if(e.target.name === 'word') {
@@ -114,7 +115,7 @@ class addEditModal extends Component {
   render() {
 
     const { isModalOpen } = this.props;
-    const { _id, word, meaning, wordsMatched } = this.state;
+    const { _id, word, meaning, wordsMatched, image_url } = this.state;
 
     return (
       <HyperModal
@@ -131,6 +132,7 @@ class addEditModal extends Component {
                   languages.map(l => <option key={l.code} value={l.code}>{l.name}</option>)
                 }
               </select>
+              <input id='image_url' autoComplete="off" className="image_url" type="text" placeholder="https://image_url.com/image" value={image_url} name="image_url" onChange={this.handleChange} onKeyDown={this.handleKeyDown} />
             </div>
             <div className="match-area">
               {

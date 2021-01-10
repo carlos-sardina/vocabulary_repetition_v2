@@ -6,7 +6,8 @@ const wordsSchema = new Schema({
   times_played: { type: Number, default: 0 },
   created: { type: Date },
   location: { type: String, default: 'ACTIVE' },
-  language: { type: String, required: [true, "Language is required"] }
+  language: { type: String, required: [true, "Language is required"] },
+  image_url: { type: String, default: null }
 });
 
 export const Word = model("words", wordsSchema);

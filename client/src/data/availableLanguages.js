@@ -1,10 +1,10 @@
 export const languages = [
   {
-    name: 'English',
+    name: 'English GB',
     code: 'en',
-    img: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Flag_of_the_United_States.svg',
-    google_id_pc: 'Google US English',
-    google_id_mobile: 'inglés Estados Unidos',
+    img: 'https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg',
+    google_id_pc: 'Google UK English Female',
+    google_id_mobile: 'inglés Reino Unido',
   },
   {
     name: '日本語',
